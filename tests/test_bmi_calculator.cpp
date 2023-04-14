@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../src/bmi_calculator.h"
+#include "../src/bmi_calculator.cpp"
 
 TEST(BMICalculatorTest, Underweight) {
     EXPECT_EQ(calculate_bmi_category(16.0), "You are underweight.");
