@@ -19,8 +19,11 @@ jobs:
     - name: Build
       run: g++ -fprofile-arcs -ftest-coverage bmi_calculator.cpp -o bmi_calculator
 
+    - name: Set execute permissions
+      run: chmod +x bmi_calculator
+
     - name: Run tests
-      run: ./bmi_calculator.cpp
+      run: ./bmi_calculator
 
     - name: Generate coverage report
       run: gcovr -r . --xml -o coverage.xml
@@ -33,4 +36,3 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         fail_ci_if_error: true
-
