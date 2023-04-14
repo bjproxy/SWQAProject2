@@ -16,10 +16,10 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get install -y g++ gcovr
 
-    - name: Build BMI Calculator
-      run: g++ -fprofile-arcs -ftest-coverage bmi_calculator.cpp -o bmi_calculator
+    - name: Build main program
+      run: g++ bmi_calculator.cpp -o bmi_calculator
 
-    - name: Build Tests
+    - name: Build tests
       run: g++ -fprofile-arcs -ftest-coverage test_bmi_calculator.cpp -o test_bmi_calculator
 
     - name: Run tests
