@@ -17,7 +17,7 @@ jobs:
       run: sudo apt-get install -y g++ gcovr
 
     - name: Build
-      run: g++ -fprofile-arcs -ftest-coverage your_source_file.cpp -o your_executable
+      run: g++ -fprofile-arcs -ftest-coverage bmi_calculator.cpp -o bmi_calculator
 
     - name: Run tests
       run: ./bmi_calculator.cpp
