@@ -20,7 +20,7 @@ jobs:
       run: g++ -fprofile-arcs -ftest-coverage bmi_calculator.cpp -o bmi_calculator
 
     - name: Run tests
-      run: ./test_bmi_calculator
+      run: ./test_bmi_calculator.cpp
 
     - name: Generate coverage report
       run: gcovr -r . --xml -o coverage.xml
