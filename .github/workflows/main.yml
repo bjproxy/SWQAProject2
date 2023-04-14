@@ -16,14 +16,14 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get install -y g++ gcovr
 
-    - name: Build
+    - name: Build BMI Calculator
       run: g++ -fprofile-arcs -ftest-coverage bmi_calculator.cpp -o bmi_calculator
 
-    - name: Set execute permissions
-      run: chmod +x bmi_calculator
+    - name: Build Tests
+      run: g++ -fprofile-arcs -ftest-coverage test_bmi_calculator.cpp -o test_bmi_calculator
 
     - name: Run tests
-      run: ./bmi_calculator
+      run: ./test_bmi_calculator
 
     - name: Generate coverage report
       run: gcovr -r . --xml -o coverage.xml
