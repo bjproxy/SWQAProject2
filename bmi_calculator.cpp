@@ -1,13 +1,37 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
+#include <stdexcept>
+#include <cctype>
 
 using namespace std;
+
+float calculate_bmi(float weight_lbs, float height_in) {
+    if (weight_lbs <= 0 || height_in <= 0) {
+        throw invalid_argument("Weight and height must be greater than 0.");
+    }
+    return (weight_lbs / (pow(height_in, 2))) * 703;
+}
+
+string get_bmi_category(float bmi) {
+    if (bmi < 18.5) {
+        return "You are underweight.";
+    }
+    else if (bmi >= 18.5 && bmi < 25.0) {
+        return "You have a normal weight.";
+    }
+    else if (bmi >= 25.0 && bmi < 30.0) {
+        return "You are overweight.";
+    }
+    else {
+        return "You are obese.";
+    }
+}
 
 int main()
 {
     bool repeat = true;
-    while (repeat) 
+    while (repeat)
     {
         // Declare variables for weight and height
         float weight_lbs, height_in;
@@ -34,29 +58,14 @@ int main()
             cout << "Invalid input. Please enter a number for weight: ";
         }
 
-        // Calculate the BMI by dividing the weight in pounds by the height in inches squared, and then multiplying by 703
-        float bmi = (weight_lbs / (pow(height_in, 2))) * 703;
+        // Calculate the BMI
+        float bmi = calculate_bmi(weight_lbs, height_in);
 
         // Print the BMI to the console
         cout << endl << "Your BMI is: " << bmi << endl;
 
-        // Print a message indicating whether the user is normal weight, overweight, or obese
-        if (bmi < 18.5)
-        {
-            cout << "You are underweight." << endl;
-        }
-        else if (bmi >= 18.5 && bmi < 25.0)
-        {
-            cout << "You have a normal weight." << endl;
-        }
-        else if (bmi >= 25.0 && bmi < 30.0)
-        {
-            cout << "You are overweight." << endl;
-        }
-        else
-        {
-            cout << "You are obese." << endl;
-        }
+        // Print the appropriate BMI category message
+        cout << get_bmi_category(bmi) << endl;
 
         // Ask the user if they want to repeat
         char repeat_input;
@@ -70,7 +79,7 @@ int main()
             cin >> repeat_input;
         }
 
-        if (tolower(repeat_input) == 'n') 
+        if (tolower(repeat_input) == 'n')
         {
             repeat = false;
         }
